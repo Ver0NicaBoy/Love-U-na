@@ -1,59 +1,95 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <title>ถึงคนพิเศษของผม 💖</title>
-    <style>
-        body {
-            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-            font-family: 'Segoe UI', sans-serif;
-            text-align: center;
-            height: 100vh;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+<meta charset="UTF-8">
+<title>ถึงคนพิเศษของผม 💖</title>
 
-        .card {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            max-width: 400px;
-        }
+<style>
+body{
+    background: linear-gradient(135deg,#ff9a9e,#fad0c4);
+    font-family: 'Segoe UI', sans-serif;
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+}
+.card{
+    background:white;
+    padding:35px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,.2);
+    max-width:400px;
+}
+h1{color:#ff4d6d;}
+button{
+    background:#ff4d6d;
+    color:white;
+    border:none;
+    padding:12px 25px;
+    border-radius:25px;
+    font-size:16px;
+    cursor:pointer;
+}
+button:hover{background:#e63950;}
 
-        h1 {
-            color: #ff4d6d;
-        }
-
-        button {
-            background: #ff4d6d;
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            font-size: 16px;
-            border-radius: 25px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: #e63950;
-        }
-    </style>
+.heart{
+    position:fixed;
+    bottom:-20px;
+    color:#ff4d6d;
+    font-size:20px;
+    animation:float 6s linear infinite;
+}
+@keyframes float{
+    from{transform:translateY(0);opacity:1;}
+    to{transform:translateY(-100vh);opacity:0;}
+}
+</style>
 </head>
+
 <body>
 
 <div class="card">
-    <h1>💖เค้ามีอะไรจะบอกเธอ 💖</h1>
-    <p id="text">อยากจะบอกว่า</p>
-    <button onclick="showLove()">กดตรงนี้สิ</button>
+    <h1>💖 ถึงคนพิเศษของผม 💖</h1>
+    <p id="msg">เค้ามีอะไรจะบอก…</p>
+    <p id="day"></p>
+    <button onclick="startLove()">กดตรงนี้สิ 💌</button>
 </div>
 
+<audio id="music" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+
 <script>
-function showLove() {
-    document.getElementById("text").innerHTML =
-        "รักเธอมากนะ ❤️ อยู่ด้วยกันแบบนี้ไปนาน ๆ เลย";
+// 👉 แก้วันคบตรงนี้
+const startDate = new Date("2022-11-11");
+
+function startLove(){
+    document.getElementById("msg").innerHTML =
+    "รักเธอมากนะ ❤️ ขอบคุณที่อยู่ข้างกันเสมอ";
+
+    document.getElementById("music").play();
+    createHearts();
+    showDays();
+}
+
+function showDays(){
+    const now = new Date();
+    const diff = Math.floor((now - startDate)/(1000*60*60*24));
+    document.getElementById("day").innerHTML =
+    `เราคบกันมาแล้ว ${diff} วัน 💕`;
+}
+
+function createHearts(){
+    setInterval(()=>{
+        const heart=document.createElement("div");
+        heart.className="heart";
+        heart.innerHTML="❤️";
+        heart.style.left=Math.random()*100+"vw";
+        heart.style.fontSize=(Math.random()*20+15)+"px";
+        document.body.appendChild(heart);
+        setTimeout(()=>heart.remove(),6000);
+    },300);
 }
 </script>
 
