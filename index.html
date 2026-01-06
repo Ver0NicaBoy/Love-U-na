@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ถึงคนพิเศษของผม 💖</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            font-family: 'Segoe UI', sans-serif;
+            text-align: center;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            max-width: 400px;
+        }
+
+        h1 {
+            color: #ff4d6d;
+        }
+
+        button {
+            background: #ff4d6d;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 25px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #e63950;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h1>💖เค้ามีอะไรจะบอกเธอ 💖</h1>
+    <p id="text">อยากจะบอกว่า</p>
+    <button onclick="showLove()">กดตรงนี้สิ</button>
+</div>
+
+<script>
+function showLove() {
+    document.getElementById("text").innerHTML =
+        "รักเธอมากนะ ❤️ อยู่ด้วยกันแบบนี้ไปนาน ๆ เลย";
+}
+</script>
+
+</body>
+</html>
